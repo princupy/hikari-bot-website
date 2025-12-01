@@ -65,28 +65,28 @@ export default function Footer() {
 
   return (
     <footer className="relative border-t border-pink-500/20 bg-black/50 backdrop-blur-xl">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12">
         {/* Top Section */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
-          {/* Brand */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-pink-400 to-pink-600 glow-pink flex items-center justify-center">
-                <MusicalNoteIcon className="w-6 h-6 text-white" />
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 mb-8 sm:mb-10 md:mb-12">
+          {/* Brand - Full Width on Mobile */}
+          <div className="col-span-2 md:col-span-3 lg:col-span-2">
+            <Link href="/" className="flex items-center space-x-2 mb-3 sm:mb-4">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-r from-pink-400 to-pink-600 glow-pink flex items-center justify-center flex-shrink-0">
+                <MusicalNoteIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
-              <span className="text-2xl font-bold gradient-text">Hikari</span>
+              <span className="text-xl sm:text-2xl font-bold gradient-text">Hikari</span>
             </Link>
-            <p className="text-gray-400 mb-4">
+            <p className="text-gray-400 text-sm sm:text-base mb-3 sm:mb-4 pr-2">
               High-quality music streaming bot for Discord with advanced features and 24/7 uptime.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-3 sm:space-x-4">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-white/5 hover:bg-pink-500/20 flex items-center justify-center transition-all duration-300 text-gray-400 hover:text-pink-400 hover:scale-110"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-white/5 hover:bg-pink-500/20 flex items-center justify-center transition-all duration-300 text-gray-400 hover:text-pink-400 hover:scale-110"
                   title={social.name}
                 >
                   {social.icon}
@@ -97,14 +97,14 @@ export default function Footer() {
 
           {/* Links Columns */}
           {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category}>
-              <h3 className="text-white font-bold mb-4">{category}</h3>
-              <ul className="space-y-2">
+            <div key={category} className="col-span-1">
+              <h3 className="text-white font-bold mb-3 sm:mb-4 text-sm sm:text-base">{category}</h3>
+              <ul className="space-y-1.5 sm:space-y-2">
                 {links.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-gray-400 hover:text-pink-400 transition-colors"
+                      className="text-gray-400 hover:text-pink-400 transition-colors text-xs sm:text-sm block"
                     >
                       {link.name}
                     </Link>
@@ -115,38 +115,38 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Stats Banner */}
+        {/* Stats Banner - Responsive Grid */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 rounded-xl bg-gradient-to-r from-pink-500/10 to-purple-500/10 border border-pink-500/20 mb-8"
+          className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-6 p-4 sm:p-5 md:p-6 rounded-xl bg-gradient-to-r from-pink-500/10 to-purple-500/10 border border-pink-500/20 mb-6 sm:mb-8"
         >
           <div className="text-center">
-            <div className="text-3xl font-bold gradient-text">10K+</div>
-            <div className="text-gray-400 text-sm">Servers</div>
+            <div className="text-2xl sm:text-3xl font-bold gradient-text">10K+</div>
+            <div className="text-gray-400 text-xs sm:text-sm">Servers</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold gradient-text">1M+</div>
-            <div className="text-gray-400 text-sm">Users</div>
+            <div className="text-2xl sm:text-3xl font-bold gradient-text">1M+</div>
+            <div className="text-gray-400 text-xs sm:text-sm">Users</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold gradient-text">50M+</div>
-            <div className="text-gray-400 text-sm">Songs Played</div>
+            <div className="text-2xl sm:text-3xl font-bold gradient-text">50M+</div>
+            <div className="text-gray-400 text-xs sm:text-sm">Songs Played</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold gradient-text">99.9%</div>
-            <div className="text-gray-400 text-sm">Uptime</div>
+            <div className="text-2xl sm:text-3xl font-bold gradient-text">99.9%</div>
+            <div className="text-gray-400 text-xs sm:text-sm">Uptime</div>
           </div>
         </motion.div>
 
         {/* Bottom Section */}
-        <div className="pt-8 border-t border-pink-500/20 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">
+        <div className="pt-6 sm:pt-8 border-t border-pink-500/20 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-gray-400 text-xs sm:text-sm text-center sm:text-left">
             © {new Date().getFullYear()} Hikari Bot. All rights reserved.
           </p>
-          <p className="text-gray-400 text-sm flex items-center mt-4 md:mt-0">
-            Made with <HeartIcon className="w-4 h-4 text-pink-500 mx-1" /> by Hikari Team
+          <p className="text-gray-400 text-xs sm:text-sm flex items-center">
+            Made with <HeartIcon className="w-3 h-3 sm:w-4 sm:h-4 text-pink-500 mx-1 animate-pulse" /> by Hikari Team
           </p>
         </div>
       </div>

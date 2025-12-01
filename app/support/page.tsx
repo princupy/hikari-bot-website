@@ -140,18 +140,18 @@ export default function SupportPage() {
   ];
 
   return (
-    <div className="min-h-screen pt-24 pb-16 relative overflow-hidden">
+    <div className="min-h-screen pt-16 sm:pt-20 md:pt-24 pb-12 sm:pb-16 relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
           transition={{ duration: 8, repeat: Infinity }}
-          className="absolute top-20 left-10 w-96 h-96 bg-pink-600/30 rounded-full blur-3xl"
+          className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-pink-600/30 rounded-full blur-3xl"
         />
         <motion.div
           animate={{ scale: [1.2, 1, 1.2], opacity: [0.1, 0.2, 0.1] }}
           transition={{ duration: 8, repeat: Infinity }}
-          className="absolute bottom-20 right-10 w-96 h-96 bg-purple-600/30 rounded-full blur-3xl"
+          className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-purple-600/30 rounded-full blur-3xl"
         />
       </div>
 
@@ -160,38 +160,39 @@ export default function SupportPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-12 md:mb-16"
         >
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="inline-flex items-center space-x-2 bg-pink-500/10 border border-pink-500/30 rounded-full px-4 py-2 mb-6"
+            className="inline-flex items-center space-x-2 bg-pink-500/10 border border-pink-500/30 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mb-4 sm:mb-6"
           >
-            <ChatBubbleLeftRightIcon className="w-5 h-5 text-pink-400" />
-            <span className="text-pink-300 text-sm font-medium">We're Here to Help</span>
+            <ChatBubbleLeftRightIcon className="w-4 h-4 sm:w-5 sm:h-5 text-pink-400" />
+            <span className="text-pink-300 text-xs sm:text-sm font-medium">We're Here to Help</span>
           </motion.div>
 
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 px-4">
             <span className="gradient-text">Get Support</span>
           </h1>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4">
             Choose your preferred way to reach us. Our team is ready to assist you!
           </p>
         </motion.div>
 
         {/* Social Support Options - Large Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-10 sm:mb-12 md:mb-16">
           {socialSupport.map((option, index) => (
             <motion.div
               key={option.title}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.05, y: -10 }}
+              whileHover={{ scale: 1.03, y: -10 }}
+              whileTap={{ scale: 0.98 }}
               className="group relative"
             >
-              <div className={`p-8 rounded-2xl bg-white/5 backdrop-blur-sm border ${option.borderColor} ${option.hoverBorder} transition-all duration-300 h-full relative overflow-hidden`}>
+              <div className={`p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-white/5 backdrop-blur-sm border ${option.borderColor} ${option.hoverBorder} transition-all duration-300 h-full relative overflow-hidden`}>
                 {/* Animated Background Glow */}
                 <motion.div
                   className={`absolute inset-0 ${option.bgGlow} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
@@ -201,21 +202,21 @@ export default function SupportPage() {
 
                 {/* Icon */}
                 <motion.div 
-                  className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${option.color} flex items-center justify-center mb-6 relative z-10 mx-auto`}
+                  className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br ${option.color} flex items-center justify-center mb-4 sm:mb-5 md:mb-6 relative z-10 mx-auto`}
                   whileHover={{ rotate: [0, -10, 10, -10, 0] }}
                   transition={{ duration: 0.5 }}
                 >
-                  <option.icon className="w-8 h-8 text-white" />
+                  <option.icon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                 </motion.div>
 
                 {/* Content */}
                 <div className="text-center relative z-10">
-                  <h3 className="text-2xl font-bold text-white mb-2">{option.title}</h3>
-                  <p className="text-gray-400 mb-4">{option.description}</p>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">{option.title}</h3>
+                  <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4">{option.description}</p>
                   
                   {/* Detail with Copy */}
-                  <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border ${option.borderColor} mb-6`}>
-                    <code className={`${option.textColor} font-mono text-sm`}>{option.detail}</code>
+                  <div className={`inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-white/5 border ${option.borderColor} mb-4 sm:mb-6`}>
+                    <code className={`${option.textColor} font-mono text-xs sm:text-sm truncate max-w-[200px]`}>{option.detail}</code>
                   </div>
 
                   {/* CTA Button */}
@@ -223,7 +224,7 @@ export default function SupportPage() {
                     href={option.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-block px-8 py-3 bg-gradient-to-r ${option.color} rounded-full text-white font-bold hover:shadow-2xl transition-all duration-300`}
+                    className={`inline-block w-full sm:w-auto px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 bg-gradient-to-r ${option.color} rounded-full text-white font-bold text-sm sm:text-base hover:shadow-2xl transition-all duration-300`}
                   >
                     {option.buttonText}
                   </a>
@@ -245,7 +246,7 @@ export default function SupportPage() {
         </div>
 
         {/* Features */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-12 md:mb-16">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -254,17 +255,18 @@ export default function SupportPage() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ scale: 1.05 }}
-              className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-pink-500/20 hover:border-pink-500/50 transition-all text-center"
+              whileTap={{ scale: 0.98 }}
+              className="p-4 sm:p-5 md:p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-pink-500/20 hover:border-pink-500/50 transition-all text-center"
             >
               <motion.div
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.5 }}
-                className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center mx-auto mb-4"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center mx-auto mb-3 sm:mb-4"
               >
-                <feature.icon className="w-6 h-6 text-white" />
+                <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </motion.div>
-              <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
-              <p className="text-gray-400 text-sm">{feature.description}</p>
+              <h3 className="text-base sm:text-lg font-bold text-white mb-2">{feature.title}</h3>
+              <p className="text-gray-400 text-xs sm:text-sm">{feature.description}</p>
             </motion.div>
           ))}
         </div>
@@ -274,22 +276,22 @@ export default function SupportPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="max-w-3xl mx-auto mb-16"
+          className="max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16"
         >
-          <div className="p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-pink-500/20 relative overflow-hidden">
+          <div className="p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-white/5 backdrop-blur-sm border border-pink-500/20 relative overflow-hidden">
             <motion.div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-purple-500/10 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-            <h2 className="text-3xl font-bold gradient-text mb-2 text-center relative z-10">
+            <h2 className="text-2xl sm:text-3xl font-bold gradient-text mb-2 text-center relative z-10">
               Send us a Message
             </h2>
-            <p className="text-gray-400 text-center mb-8 relative z-10">
+            <p className="text-gray-400 text-sm sm:text-base text-center mb-6 sm:mb-8 relative z-10 px-4">
               Fill out the form below and we'll get back to you soon
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-              <div className="grid md:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 relative z-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-300 mb-2">
+                  <label className="block text-xs sm:text-sm font-semibold text-gray-300 mb-2">
                     Your Name *
                   </label>
                   <input
@@ -297,13 +299,13 @@ export default function SupportPage() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-pink-500/20 text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-white/5 border border-pink-500/20 text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors text-sm sm:text-base"
                     placeholder="John Doe"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-300 mb-2">
+                  <label className="block text-xs sm:text-sm font-semibold text-gray-300 mb-2">
                     Email Address *
                   </label>
                   <input
@@ -311,14 +313,14 @@ export default function SupportPage() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-pink-500/20 text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-white/5 border border-pink-500/20 text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors text-sm sm:text-base"
                     placeholder="john@example.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-300 mb-2">
+                <label className="block text-xs sm:text-sm font-semibold text-gray-300 mb-2">
                   Subject *
                 </label>
                 <input
@@ -326,21 +328,21 @@ export default function SupportPage() {
                   required
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg bg-white/5 border border-pink-500/20 text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-white/5 border border-pink-500/20 text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors text-sm sm:text-base"
                   placeholder="How can we help?"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-300 mb-2">
+                <label className="block text-xs sm:text-sm font-semibold text-gray-300 mb-2">
                   Message *
                 </label>
                 <textarea
                   required
-                  rows={6}
+                  rows={5}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg bg-white/5 border border-pink-500/20 text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors resize-none"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-white/5 border border-pink-500/20 text-white placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors resize-none text-sm sm:text-base"
                   placeholder="Tell us more about your issue..."
                 />
               </div>
@@ -350,20 +352,20 @@ export default function SupportPage() {
                 disabled={submitted || isSubmitting}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full py-4 bg-gradient-to-r from-pink-500 to-pink-600 rounded-lg text-white font-bold glow-pink hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full py-3 sm:py-4 bg-gradient-to-r from-pink-500 to-pink-600 rounded-lg text-white font-bold text-sm sm:text-base glow-pink hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {isSubmitting ? (
                   <>
                     <motion.div
                       animate={{ rotate: 360 }}
                       transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
+                      className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full"
                     />
                     Sending...
                   </>
                 ) : submitted ? (
                   <>
-                    <CheckCircleIcon className="w-6 h-6" />
+                    <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6" />
                     Message Sent!
                   </>
                 ) : (
@@ -375,7 +377,7 @@ export default function SupportPage() {
                 <motion.p
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-center text-pink-400 text-sm"
+                  className="text-center text-pink-400 text-xs sm:text-sm"
                 >
                   ✓ Thank you! We'll get back to you soon via email.
                 </motion.p>
@@ -389,16 +391,16 @@ export default function SupportPage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-10 sm:mb-12 md:mb-16"
         >
-          <h2 className="text-4xl font-bold gradient-text mb-2 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text mb-2 text-center px-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-gray-400 text-center mb-12">
+          <p className="text-gray-400 text-sm sm:text-base text-center mb-8 sm:mb-10 md:mb-12 px-4">
             Quick answers to common questions
           </p>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-5xl mx-auto">
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
@@ -407,13 +409,14 @@ export default function SupportPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.02, y: -5 }}
-                className="p-6 rounded-xl bg-white/5 border border-pink-500/20 hover:border-pink-500/50 transition-all duration-300"
+                whileTap={{ scale: 0.98 }}
+                className="p-4 sm:p-5 md:p-6 rounded-xl bg-white/5 border border-pink-500/20 hover:border-pink-500/50 transition-all duration-300"
               >
-                <div className="flex items-start gap-3 mb-3">
-                  <QuestionMarkCircleIcon className="w-6 h-6 text-pink-400 flex-shrink-0 mt-1" />
-                  <h3 className="text-lg font-bold text-white">{faq.q}</h3>
+                <div className="flex items-start gap-2 sm:gap-3 mb-2 sm:mb-3">
+                  <QuestionMarkCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-pink-400 flex-shrink-0 mt-0.5 sm:mt-1" />
+                  <h3 className="text-sm sm:text-base md:text-lg font-bold text-white">{faq.q}</h3>
                 </div>
-                <p className="text-gray-400 pl-9">{faq.a}</p>
+                <p className="text-gray-400 text-xs sm:text-sm pl-7 sm:pl-9">{faq.a}</p>
               </motion.div>
             ))}
           </div>
@@ -424,7 +427,7 @@ export default function SupportPage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center p-12 rounded-3xl bg-gradient-to-r from-purple-600/10 to-blue-600/10 border border-purple-500/30 relative overflow-hidden"
+          className="text-center p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-purple-600/10 to-blue-600/10 border border-purple-500/30 relative overflow-hidden"
         >
           <motion.div
             animate={{ rotate: 360 }}
@@ -433,10 +436,10 @@ export default function SupportPage() {
           />
           
           <div className="relative z-10">
-            <h2 className="text-3xl font-bold gradient-text mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold gradient-text mb-3 sm:mb-4 px-4">
               Still have questions?
             </h2>
-            <p className="text-gray-400 mb-6 text-lg">
+            <p className="text-gray-400 mb-4 sm:mb-6 text-sm sm:text-base md:text-lg px-4">
               Join our Discord community for instant support from 10K+ members
             </p>
             <motion.a
@@ -445,9 +448,9 @@ export default function SupportPage() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full text-white font-bold shadow-2xl hover:shadow-purple-500/50 transition-all duration-300"
+              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full text-white font-bold text-sm sm:text-base shadow-2xl hover:shadow-purple-500/50 transition-all duration-300"
             >
-              <DiscordIcon className="w-6 h-6" />
+              <DiscordIcon className="w-5 h-5 sm:w-6 sm:h-6" />
               Join Discord Server
             </motion.a>
           </div>

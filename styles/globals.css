@@ -151,3 +151,249 @@ body.akari-page ::-webkit-scrollbar-thumb {
 body.akari-page ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #8B5CF6, #7C3AED);
 }
+
+/* ========================================
+   MOBILE RESPONSIVE STYLES
+   ======================================== */
+
+/* Tablet and Below (iPad, Mobile) */
+@media (max-width: 1024px) {
+  /* Reduce petal/sparkle sizes */
+  .cherry-petal {
+    width: 10px;
+    height: 10px;
+  }
+
+  .akari-sparkle {
+    width: 6px;
+    height: 6px;
+  }
+
+  /* Reduce glow intensity on tablets */
+  .glow-pink {
+    box-shadow: 0 0 15px rgba(255, 183, 213, 0.4),
+                0 0 30px rgba(255, 183, 213, 0.2);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 15px rgba(124, 58, 237, 0.5),
+                0 0 30px rgba(124, 58, 237, 0.3);
+  }
+}
+
+/* Mobile Devices (Phones) */
+@media (max-width: 768px) {
+  /* Base font size adjustment */
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Reduce animations on mobile */
+  .cherry-petal {
+    width: 8px;
+    height: 8px;
+  }
+
+  .akari-sparkle {
+    width: 5px;
+    height: 5px;
+  }
+
+  /* Simplify glow effects */
+  .glow-pink {
+    box-shadow: 0 0 10px rgba(255, 183, 213, 0.3);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 10px rgba(124, 58, 237, 0.4);
+  }
+
+  /* Mobile-optimized scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  /* Gradient text mobile fix */
+  .gradient-text,
+  .gradient-text-akari {
+    background-size: 200% auto;
+  }
+
+  /* Prevent text overflow */
+  h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Container padding */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Button mobile optimization */
+  .btn-akari,
+  button,
+  a.button {
+    min-height: 44px; /* Touch-friendly */
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+/* Small Mobile Devices (iPhone SE, small Android) */
+@media (max-width: 640px) {
+  html {
+    font-size: 13px;
+  }
+
+  /* Further reduce particle effects */
+  .cherry-petal,
+  .akari-sparkle {
+    display: none; /* Hide on very small screens for performance */
+  }
+
+  /* Minimal glow effects */
+  .glow-pink,
+  .glow-purple {
+    box-shadow: none;
+  }
+
+  /* Add subtle border instead of glow */
+  .glow-pink {
+    border: 1px solid rgba(255, 183, 213, 0.3);
+  }
+
+  .glow-purple {
+    border: 1px solid rgba(124, 58, 237, 0.3);
+  }
+
+  /* Mobile scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  /* Tighter spacing */
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+/* Extra Small Devices (Very old phones) */
+@media (max-width: 375px) {
+  html {
+    font-size: 12px;
+  }
+
+  /* Minimal effects */
+  .glow-pink,
+  .glow-purple {
+    box-shadow: none;
+    border: none;
+  }
+
+  /* Compact containers */
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+/* Landscape Mode on Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  /* Reduce vertical spacing in landscape */
+  section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  /* Hide decorative elements in landscape */
+  .cherry-petal,
+  .akari-sparkle {
+    display: none;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Disable hover effects on touch */
+  .btn-akari:hover {
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #FFB7D5, #FFA8CC);
+  }
+
+  body.akari-page ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #7C3AED, #3B82F6);
+  }
+}
+
+/* High DPI Screens (Retina) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Crisp borders */
+  .glow-pink,
+  .glow-purple {
+    border-width: 0.5px;
+  }
+}
+
+/* Dark Mode Support (System Preference) */
+@media (prefers-color-scheme: dark) {
+  /* Already dark, but ensure it stays dark */
+  body {
+    background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+    color: white;
+  }
+}
+
+/* Reduced Motion (Accessibility) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .cherry-petal,
+  .akari-sparkle {
+    animation: none;
+    display: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .cherry-petal,
+  .akari-sparkle {
+    display: none;
+  }
+
+  .glow-pink,
+  .glow-purple {
+    box-shadow: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+}
