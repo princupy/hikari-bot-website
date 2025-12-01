@@ -142,8 +142,10 @@ const akariStats = [
 
 export default function PremiumPage() {
   const [showToast, setShowToast] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     document.body.classList.add('akari-page');
     return () => {
       document.body.classList.remove('akari-page');
@@ -153,8 +155,15 @@ export default function PremiumPage() {
   const handleAddBot = () => {
     setShowToast(true);
     setTimeout(() => setShowToast(false), 3000);
-    window.open('https://discord.com/oauth2/authorize?client_id=1426105190196707399&permissions=321751086336768&integration_type=0&scope=bot', '_blank');
+    if (typeof window !== 'undefined') {
+      window.open('https://discord.com/oauth2/authorize?client_id=1426105190196707399&permissions=321751086336768&integration_type=0&scope=bot', '_blank');
+    }
   };
+
+  // Wait for client-side mount
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen pt-16 sm:pt-20 md:pt-24 pb-12 sm:pb-16 relative overflow-hidden akari-theme">
@@ -183,8 +192,8 @@ export default function PremiumPage() {
             key={i}
             className="absolute"
             initial={{ 
-              x: typeof window !== 'undefined' ? Math.random() * window.innerWidth : 0,
-              y: typeof window !== 'undefined' ? Math.random() * window.innerHeight : 0,
+              x: Math.random() * 1200,
+              y: Math.random() * 800,
             }}
             animate={{
               y: [0, -30, 0],
@@ -304,7 +313,7 @@ export default function PremiumPage() {
                     style={{
                       top: '50%',
                       left: '50%',
-                      transform: `rotate(${angle}deg) translateX(${window.innerWidth < 640 ? '120px' : '200px'}) translateY(-50%)`,
+                      transform: `rotate(${angle}deg) translateX(200px) translateY(-50%)`,
                     }}
                     animate={{
                       scale: [1, 1.5, 1],
@@ -331,7 +340,7 @@ export default function PremiumPage() {
                     style={{
                       top: '50%',
                       left: '50%',
-                      transform: `rotate(${angle}deg) translateX(${window.innerWidth < 640 ? '80px' : '140px'}) translateY(-50%)`,
+                      transform: `rotate(${angle}deg) translateX(140px) translateY(-50%)`,
                     }}
                   >
                     <SparklesIcon className="w-4 h-4 sm:w-6 sm:h-6 text-blue-400" />
@@ -361,8 +370,8 @@ export default function PremiumPage() {
                 </motion.div>
               </motion.div>
 
-              {/* Music Notes - Reduced on Mobile */}
-              {[...Array(window.innerWidth < 640 ? 4 : 8)].map((_, i) => (
+              {/* Music Notes */}
+              {[...Array(8)].map((_, i) => (
                 <motion.div
                   key={i}
                   initial={{ y: 0, opacity: 0 }}
