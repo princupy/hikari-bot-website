@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hikari Theme (Pink) */
+:root {
+  --pink-primary: #FFB7D5;
+  --pink-secondary: #FFC8DD;
+  --pink-accent: #FFA8CC;
+  --dark-bg: #0f0f1a;
+  --darker-bg: #0a0a12;
+}
+
+/* Akari Theme (Purple/Blue) */
+.akari-theme {
+  --akari-primary: #7C3AED;
+  --akari-secondary: #3B82F6;
+  --akari-accent: #A855F7;
+  --akari-glow: #8B5CF6;
+  --akari-dark: #1E1B4B;
+  --akari-darker: #0F172A;
+}
+
+body {
+  background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Akari Page Background */
+body.akari-page {
+  background: linear-gradient(135deg, #0F172A 0%, #1E1B4B 100%);
+}
+
+/* Cherry Blossom - Hikari */
+.cherry-petal {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(ellipse at center, #FFB7D5 0%, #FFC8DD 50%, transparent 100%);
+  border-radius: 50% 50% 50% 0;
+  animation: fall linear forwards, spin 3s linear infinite;
+  pointer-events: none;
+}
+
+/* Purple Sparkles - Akari */
+.akari-sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(ellipse at center, #A855F7 0%, #7C3AED 50%, transparent 100%);
+  border-radius: 50%;
+  animation: sparkle-fall linear forwards, sparkle-spin 2s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  0% {
+    top: -10%;
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    top: 110%;
+    transform: translateX(100px) rotate(720deg);
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotateZ(0deg); }
+  100% { transform: rotateZ(360deg); }
+}
+
+@keyframes sparkle-fall {
+  0% {
+    top: -10%;
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    top: 110%;
+    transform: translateX(50px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle-spin {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+}
+
+/* Hikari Glow (Pink) */
+.glow-pink {
+  box-shadow: 0 0 20px rgba(255, 183, 213, 0.5),
+              0 0 40px rgba(255, 183, 213, 0.3);
+}
+
+/* Akari Glow (Purple) */
+.glow-purple {
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.6),
+              0 0 40px rgba(124, 58, 237, 0.4);
+}
+
+/* Hikari Gradient Text */
+.gradient-text {
+  background: linear-gradient(90deg, #FFB7D5, #FFC8DD, #FFA8CC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Akari Gradient Text */
+.gradient-text-akari {
+  background: linear-gradient(90deg, #7C3AED, #3B82F6, #A855F7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Akari Button */
+.btn-akari {
+  background: linear-gradient(135deg, #7C3AED 0%, #3B82F6 100%);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+}
+
+.btn-akari:hover {
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.8);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #FFB7D5, #FFA8CC);
+  border-radius: 10px;
+}
+
+body.akari-page ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #7C3AED, #3B82F6);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #FFC8DD, #FFB7D5);
+}
+
+body.akari-page ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #8B5CF6, #7C3AED);
+}
