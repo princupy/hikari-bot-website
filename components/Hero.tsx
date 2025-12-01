@@ -3,6 +3,16 @@ import { motion } from 'framer-motion';
 import { MusicalNoteIcon, SparklesIcon } from '@heroicons/react/24/solid';
 
 export default function Hero() {
+  // Fixed: Pre-calculate positions to avoid hydration mismatch
+  const floatingNotes = [
+    { top: '15%', left: '20%' },
+    { top: '35%', left: '80%' },
+    { top: '60%', left: '15%' },
+    { top: '75%', left: '75%' },
+    { top: '25%', left: '60%' },
+    { top: '85%', left: '40%' },
+  ];
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
       {/* Animated Background Gradient */}
@@ -133,10 +143,10 @@ export default function Hero() {
                 <MusicalNoteIcon className="w-32 h-32 text-white" />
               </div>
 
-              {/* Floating Music Notes */}
-              {[...Array(6)].map((_, i) => (
+              {/* Floating Music Notes - FIXED */}
+              {floatingNotes.map((position, i) => (
                 <motion.div
-                  key={i}
+                  key={`note-${i}`}
                   initial={{ y: 0 }}
                   animate={{ y: [-20, 20, -20] }}
                   transition={{
@@ -146,8 +156,8 @@ export default function Hero() {
                   }}
                   className="absolute"
                   style={{
-                    top: `${Math.random() * 80 + 10}%`,
-                    left: `${Math.random() * 80 + 10}%`,
+                    top: position.top,
+                    left: position.left,
                   }}
                 >
                   <MusicalNoteIcon className="w-6 h-6 text-pink-400 opacity-50" />

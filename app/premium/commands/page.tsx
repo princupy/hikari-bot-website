@@ -212,23 +212,33 @@ export default function AkariCommandsPage() {
     }
 
     if (searchQuery) {
-      filtered = filtered.map(category => ({
-        ...category,
-        commands: category.commands?.filter(cmd =>
-          cmd.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          cmd.description.toLowerCase().includes(searchQuery.toLowerCase())
-        ),
-        subcategories: category.subcategories?.map(sub => ({
-          ...sub,
-          commands: sub.commands.filter(cmd =>
+      filtered = filtered.map(category => {
+        if (category.commands) {
+          const filteredCommands = category.commands.filter(cmd =>
             cmd.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
             cmd.description.toLowerCase().includes(searchQuery.toLowerCase())
-          ),
-        })).filter(sub => sub.commands.length > 0),
-      })).filter(cat =>
-        (cat.commands && cat.commands.length > 0) ||
-        (cat.subcategories && cat.subcategories.length > 0)
-      );
+          );
+          if (filteredCommands.length === 0) return null;
+          return {
+            ...category,
+            commands: filteredCommands,
+          };
+        } else if (category.subcategories) {
+          const filteredSubcategories = category.subcategories.map(sub => ({
+            ...sub,
+            commands: sub.commands.filter(cmd =>
+              cmd.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              cmd.description.toLowerCase().includes(searchQuery.toLowerCase())
+            ),
+          })).filter(sub => sub.commands.length > 0);
+          if (filteredSubcategories.length === 0) return null;
+          return {
+            ...category,
+            subcategories: filteredSubcategories,
+          };
+        }
+        return null;
+      }).filter((cat): cat is typeof akariCommands[0] => cat !== null);
     }
 
     setFilteredCommands(filtered);
